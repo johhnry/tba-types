@@ -47,3 +47,49 @@
 /// <reference path="./qwidget.d.ts" />
 /// <reference path="./qpixmap.d.ts" />
 /// <reference path="./qimage.d.ts" />
+
+declare interface Function {
+  /**
+   * The function name.
+   */
+  readonly name: string;
+}
+
+declare interface Object {
+  /**
+   * The prototype of an object (QScriptValue::prototype()) can be accessed through its __proto__ property in script code.
+   * This property has the QScriptValue::Undeletable flag set.
+   */
+  __proto__: object | null;
+
+  /**
+   * This function installs a getter function for a property of an object.
+   * The first argument is the property name, and the second is the function to call to get the value of that property.
+   * When the function is invoked, the this object will be the object whose property is accessed.
+   */
+  __defineGetter__(propertyName: string, getter: () => any): void;
+
+  /**
+   * This function installs a setter function for a property of an object.
+   * The first argument is the property name, and the second is the function to call to set the value of that property.
+   * When the function is invoked, the this object will be the object whose property is accessed.
+   */
+  __defineSetter__(propertyName: string, setter: (v: any) => void): void;
+}
+
+/**
+ * This function invokes the garbage collector.
+ */
+declare function gc(): void;
+
+interface Error {
+  /** The line number where the error occurred. */
+  lineNumber: number;
+
+  /** The file name where the error occurred (if a file name was passed to QScriptEngine::evaluate()). */
+  fileName: string;
+
+  expressionBeginOffset: number;
+  expressionEndOffset: number;
+  sourceId: number;
+}
