@@ -2572,7 +2572,6 @@ thumbnailFrame  int  (Optional) Which frame to use as thumbnail. Not available f
      * (Optional) The codec of the movie, default value is ""
      */
     codec?: int;
-    string;
     /**
      * (Optional) Whether or not the movie will have alpha, default value is true (used only when codec supports an alpha channel). Only used in prores codecs
      */
