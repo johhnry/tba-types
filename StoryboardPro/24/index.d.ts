@@ -14,6 +14,7 @@ declare type QScriptContext = any;
 declare type QScriptEngine = any;
 declare type QScriptValue = any;
 declare type DD_DragObject = any;
+
 declare class UI_DialogController {}
 
 /**
@@ -31,6 +32,7 @@ declare var __file__: string;
 declare var __FILE__: string;
 
 declare class SCR_BaseInterface {}
+type QProcessEnvironment = any;
 
 /**
  * The ComboBox JavaScript class. A simplified version of the ComboBox Qt widget.
@@ -2496,7 +2498,37 @@ declare class File extends QObject {
  * var file = new File(filePath);
  * f.open(FileAccess.ReadOnly);
  */
-declare class FileAccess extends QObject {}
+declare class FileAccess extends QObject {
+  /**
+   * @returns {number}
+   */
+  static ReadOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static WriteOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static ReadWrite: number;
+
+  /**
+   * @returns {number}
+   */
+  static Append: number;
+
+  /**
+   * @returns {number}
+   */
+  static Truncate: number;
+
+  /**
+   * @returns {number}
+   */
+  static Translate: number;
+}
 
 /**
  * With the Function Manager, you can manipulate the camera functions and the layer functions. Note
@@ -7025,9 +7057,9 @@ declare class view extends SCR_BaseInterface {
   /**
    * returns a string that indicates what type of View the currentView is.
    * @param {string} viewName The current view value, as returned by the currentView function.
-   * @returns {ColumnType}
+   * @returns {string}
    */
-  public type(viewName: string): ColumnType;
+  public type(viewName: string): string;
 
   /**
    * Returns a list of available views of the given type.

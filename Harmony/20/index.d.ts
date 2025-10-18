@@ -4425,7 +4425,7 @@ declare namespace node {
    * Returns the model matrix of a node.
    * @param {string} node The name of the node.
    * @param {int} frame Is the int that specifies the frame number.
-   * @returns {QObject}
+   * @returns {Matrix4x4}
    * @example
    * var myNodeModelMatrix = node.getMatrix("Top/MyNode", frame.current());
    * var myNodeWorldPosition = myNodeModelMatrix.multiply(new Point3d);
@@ -4435,7 +4435,7 @@ declare namespace node {
    * if (myNodeWorldPosition.z > myOtherNodeWorldPosition.z)
    *     MessageLog.trace("My node is in front of the other node");
    */
-  function getMatrix(node: string, frame: int): QObject;
+  function getMatrix(node: string, frame: int): Matrix4x4;
 
   /**
    * Returns the number of versions of the node available.
@@ -12360,7 +12360,37 @@ declare class File extends QObject {
  * var file = new File(filePath);
  * f.open(FileAccess.ReadOnly);
  */
-declare class FileAccess extends QObject {}
+declare class FileAccess extends QObject {
+  /**
+   * @returns {number}
+   */
+  static ReadOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static WriteOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static ReadWrite: number;
+
+  /**
+   * @returns {number}
+   */
+  static Append: number;
+
+  /**
+   * @returns {number}
+   */
+  static Truncate: number;
+
+  /**
+   * @returns {number}
+   */
+  static Translate: number;
+}
 
 /**
  * The IO JavaScript global object. Enumerates the different types of stream behaviour the ImageFile

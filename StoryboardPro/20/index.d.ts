@@ -14,9 +14,25 @@ declare type QScriptContext = any;
 declare type QScriptEngine = any;
 declare type QScriptValue = any;
 declare type DD_DragObject = any;
+
 declare class UI_DialogController {}
 
+/**
+ * The path to the current .js file being run.
+ * @example
+ * var currentFilePath = __file__; Result: /path/to/file.js
+ */
+declare var __file__: string;
+
+/**
+ * The name of the current .js file being run.
+ * @example
+ * var currentFileName = __FILE__; Result: file.js
+ */
+declare var __FILE__: string;
+
 declare class SCR_BaseInterface {}
+type QProcessEnvironment = any;
 
 /**
  * The specialFolders JavaScript global object. Provide the path to application specific paths.
@@ -167,7 +183,7 @@ declare namespace specialFolders {
  * myDialog.add(userInput);
  *
  * if (myDialog.exec())
- *     MessageLog.trace("The user’s favourite colour is " + userInput.currentItem + ".");
+ *     MessageLog.trace("The user�s favourite colour is " + userInput.currentItem + ".");
  */
 declare class ComboBox extends Labeled {
   /**
@@ -2368,7 +2384,37 @@ declare class File extends QObject {
  * var file = new File(filePath);
  * f.open(FileAccess.ReadOnly);
  */
-declare class FileAccess extends QObject {}
+declare class FileAccess extends QObject {
+  /**
+   * @returns {number}
+   */
+  static ReadOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static WriteOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static ReadWrite: number;
+
+  /**
+   * @returns {number}
+   */
+  static Append: number;
+
+  /**
+   * @returns {number}
+   */
+  static Truncate: number;
+
+  /**
+   * @returns {number}
+   */
+  static Translate: number;
+}
 
 /**
  * With the Function Manager, you can manipulate the camera functions and the layer functions. Note
@@ -5357,8 +5403,10 @@ declare class fileMapper extends SCR_BaseInterface {
    * Converts a path of the form /USA_DB/jobs/[job]/scene-[scene]/[remainder...] to eg.
    * /usadata000/[job]/scene-[scene]/[remainder...].
    * If working offline (no database) this function will return the input path.
+   *
    *  In database mode if the path is not of the form
    * this function will return the input path.
+   *
    *  In database mode if the scene cannot be located in the database this function will return the input
    * path.
    * @param {string} path The path to convert.

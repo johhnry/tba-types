@@ -32,15 +32,6 @@ declare var __file__: string;
 declare var __FILE__: string;
 
 /**
- * Undocumented File access modes for `File.open()`
- */
-declare const enum FileAccessMode {
-  READ = 1,
-  WRITE = 2,
-  APPEND = 4,
-}
-
-/**
  * DrawingKey
  * Using in the 'Drawing' class, but all of its properties are unknown to me (FIXME)
  */
@@ -12752,7 +12743,37 @@ declare class File extends QObject {
  * var file = new File(filePath);
  * f.open(FileAccess.ReadOnly);
  */
-declare class FileAccess extends QObject {}
+declare class FileAccess extends QObject {
+  /**
+   * @returns {number}
+   */
+  static ReadOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static WriteOnly: number;
+
+  /**
+   * @returns {number}
+   */
+  static ReadWrite: number;
+
+  /**
+   * @returns {number}
+   */
+  static Append: number;
+
+  /**
+   * @returns {number}
+   */
+  static Truncate: number;
+
+  /**
+   * @returns {number}
+   */
+  static Translate: number;
+}
 
 /**
  * The IO JavaScript global object. Enumerates the different types of stream behaviour the ImageFile
